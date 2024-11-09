@@ -53,33 +53,49 @@
                 </div>
             </li>
 
-            <li class="menu-title mt-2">Apps</li>
+
 
             <li>
-                <a href="apps-calendar.html">
-                    <i data-feather="calendar"></i>
-                    <span> Calendar </span>
+                <a href="#sidebarEmail" data-bs-toggle="collapse">
+                    <i data-feather="mail"></i>
+                    <span> Customer </span>
+                    <span class="menu-arrow"></span>
                 </a>
-            </li>
+                <div class="collapse" id="sidebarEmail">
+                    <ul class="nav-second-level">
+                        <li><a href="{{route('customer')}}"> Add Customer</a></li>
+                        <li><a href="{{url('/show/customer')}}">Manage Customer</a></li>
+                        
+                    </ul>
+                </div>
+            </li> 
 
             <li>
-                <a href="apps-chat.html">
-                    <i data-feather="message-square"></i>
-                    <span> Chat </span>
+                <a href="#sidebarEmail" data-bs-toggle="collapse">
+                    <i data-feather="mail"></i>
+                    <span> Category </span>
+                    <span class="menu-arrow"></span>
                 </a>
+                <div class="collapse" id="sidebarEmail">
+                    <ul class="nav-second-level">
+                        <li><a href="{{url('/category')}}"> Add Category</a></li>
+                        <li><a href="{{url('/show/category')}}">List of Category</a></li>
+                        
+                    </ul>
+                </div>
             </li>
 
             <li>
                 <a href="#sidebarEmail" data-bs-toggle="collapse">
                     <i data-feather="mail"></i>
-                    <span> Email </span>
+                    <span> Brand </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarEmail">
                     <ul class="nav-second-level">
-                        <li><a href="email-inbox.html">Inbox</a></li>
-                        <li><a href="email-read.html">Read Email</a></li>
-                        <li><a href="email-compose.html">Compose Email</a></li>
+                        <li><a href="{{url('/brand')}}"> Add Brand</a></li>
+                        <li><a href="{{url('/show/brand')}}">List of Brand</a></li>
+                        
                     </ul>
                 </div>
             </li>
@@ -87,30 +103,32 @@
             <li>
                 <a href="#sidebarProjects" data-bs-toggle="collapse">
                     <i data-feather="briefcase"></i>
-                    <span> Projects </span>
+                    <span> Products </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarProjects">
                     <ul class="nav-second-level">
-                        <li><a href="project-list.html">List</a></li>
-                        <li><a href="project-detail.html">Detail</a></li>
+                        <li><a href="{{url('/product')}}"> Add Product </a></li>
+                        <li><a href="{{url('/product/show')}}">List of Product </a></li>
+                    </ul>
+                </div>
+            </li> 
+
+            <li>
+                <a href="#sidebarProjects" data-bs-toggle="collapse">
+                    <i data-feather="briefcase"></i>
+                    <span> Sale </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarProjects">
+                    <ul class="nav-second-level">
+                        <li><a href="{{url('/sale')}}"> Sale </a></li>
+                        <li><a href="{{url('/sale/show')}}">List of Sale </a></li>
                     </ul>
                 </div>
             </li>
 
-            <li>
-                <a href="#sidebarTasks" data-bs-toggle="collapse">
-                    <i data-feather="clipboard"></i>
-                    <span> Tasks </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarTasks">
-                    <ul class="nav-second-level">
-                        <li><a href="task-list.html">List</a></li>
-                        <li><a href="task-board.html">Kanban Board</a></li>
-                    </ul>
-                </div>
-            </li>
+          
 
             <li>
                 <a href="apps-file-manager.html">

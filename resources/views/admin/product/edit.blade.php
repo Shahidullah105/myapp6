@@ -5,7 +5,7 @@
  
  <div class="card">
   <div class="card-header">
-    Edit Customer
+    Edit Product
   </div>
   <div class="card-body">
   @if(session()->has('success'))
@@ -19,7 +19,7 @@
         {{ session()->get('error') }}
     </div>
 @endif
-  <form  action="{{url('/customer/update')}}" method="POST" enctype="multipart/form-data">
+  <form  action="{{url('/product/update')}}" method="POST" enctype="multipart/form-data">
      @csrf
 
      <input type="hidden" name="id" value="{{$record->id}}">
