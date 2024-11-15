@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\InvoiceController;
+//use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -37,9 +39,29 @@ Route::post('/product/submit', [ProductController::class, 'create'])->middleware
 Route::get('/product/show', [ProductController::class, 'show'])->middleware('auth');
 Route::post('/product/update', [ProductController::class, 'update'])->middleware('auth');
 Route::get('/delete/{id}', [ProductController::class, 'destroy'])->middleware('auth');
+Route::get('/productlist', [ProductController::class, 'ProductList'])->name('product')->middleware('auth');
 
-Route::get('/brand', [BrandController::class, 'index'])->middleware('auth');
-Route::get('/category', [CategoryController::class, 'index'])->middleware('auth');
+Route::get('/customerlist', [CustomerController::class, 'customerlist'])->middleware('auth');
+Route::get('/sale', [InvoiceController::class, 'sale'])->name('sale')->middleware('auth');
+Route::post('/invoices', [InvoiceController::class, 'submitInvoice'])->name('submitInvoice')->middleware('auth');
+//Route::get('/setting', [SettingController::class, 'edit'])->middleware('auth');
+//Route::post('/setting/update', [SettingController::class, 'update'])->middleware('auth');
+
+Route::get('/show/brand', [BrandController::class, 'show'])->middleware('auth');
+Route::get('/edit/brand/{id}', [BrandController::class, 'edit'])->middleware('auth');
+Route::get('/brand', [BrandController::class, 'index'])->name('brand')->middleware('auth');
+Route::post('/brand/submit', [BrandController::class, 'store'])->middleware('auth');
+
+Route::post('/brand/update', [BrandController::class, 'update'])->middleware('auth');
+Route::get('/delete/{id}', [BrandController::class, 'destroy'])->middleware('auth');
+
+Route::get('/show/category', [CategoryController::class, 'show'])->middleware('auth');
+Route::get('/edit/category/{id}', [CategoryController::class, 'edit'])->middleware('auth');
+Route::get('/category', [CategoryController::class, 'index'])->name('category')->middleware('auth');
+Route::post('/category/submit', [CategoryController::class, 'create'])->middleware('auth');
+
+Route::post('/category/update', [CategoryController::class, 'update'])->middleware('auth');
+Route::get('/delete/{id}', [CategoryController::class, 'destroy'])->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -1,7 +1,7 @@
 @extends('layouts.master')
  
  @section('content')
-  <!-- start page title -->
+  <!-- start page title --> 
   
   <div class="card">
    <div class="card-header">

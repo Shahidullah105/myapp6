@@ -3,9 +3,9 @@
 @section('content')
  <!-- start page title -->
  
- <div class="card">
+ <div class="card"> 
   <div class="card-header">
-    Add Product Information
+    Add Product Information 
   </div>
   <div class="card-body">
   @if(session()->has('success'))

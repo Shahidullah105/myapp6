@@ -18,11 +18,11 @@ class ProductController extends Controller
     }
 
 
-    //public function ProductList()
-    //{
-        //$products = Product::all(); // Assuming you have a Product model
-      //  return response()->json($products);
-    //}
+    public function ProductList()
+    {
+        $products = Product::all(); // Assuming you have a Product model
+        return response()->json($products);
+    }
 
     public function store(Request $request){
         // dd($request->all());

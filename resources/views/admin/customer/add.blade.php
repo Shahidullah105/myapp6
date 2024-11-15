@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
- <!-- start page title -->
+ <!-- start page title --> 
  
  <div class="card">
-  <div class="card-header">
+  <div class="card-header"> 
     Add Customer Info
   </div> 
-  <div class="card-body">
+  <div class="card-body"> 
   @if(session()->has('success'))
     <div class="alert alert-success">
         {{ session()->get('success') }}

@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+ 
 
 class CustomerController extends Controller
 {
     public function show(){
         $all=Customer::all();
         return view('admin.customer.show',compact('all'));
+    }
+
+    public function customerlist(){
+        $all=Customer::all();
+        return response()->json($all);
     }
 
     public function index(){

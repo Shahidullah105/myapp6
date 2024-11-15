@@ -4,8 +4,8 @@
  <!-- start page title -->
  
  <div class="card">
-  <div class="card-header">
-    Edit Customer
+  <div class="card-header"> 
+    Edit Customer 
   </div>
   <div class="card-body">
   @if(session()->has('success'))

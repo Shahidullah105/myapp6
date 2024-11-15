@@ -1,12 +1,12 @@
 @extends('layouts.master')
- 
+  
 @section('content')
  <!-- start page title -->
  
  <div class="card">
   <div class="card-header">
     Add Customer
-  </div>
+  </div> 
   <div class="card-body">
   @if(session()->has('success'))
     <div class="alert alert-success">
