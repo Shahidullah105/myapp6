@@ -140,6 +140,20 @@
             background-color: #dc3545;
             padding: 10px;
         }
+
+
+        #paymentModal .modal-dialog {
+        width: 600px;  /* Custom width */
+        height: 400px; /* Custom height */
+    }
+
+    @media (max-width: 768px) {
+        /* Responsive adjustments for smaller screens */
+        #paymentModal .modal-dialog {
+            width: 90%;   /* Set width to 90% of the screen for smaller devices */
+            height: auto; /* Height will adjust dynamically */
+        }
+    }
     </style>
 </head>
 <body>
@@ -166,7 +180,31 @@
         </div>
         
         <!-- Product Details -->
-       
+       <script>
+
+           // Fetch customer list from server
+           customerlist();
+           async function customerlist() {
+            let response = await fetch('/customerlist');
+            let data = await response.json();
+            let customerList=$("#customerList");
+             customerList.empty();
+             data.forEach(function(item,index) {
+                let row=`
+                
+                  <tr>
+                 <td>${item.name}</td>
+                  <td> <a class="btn btn-dark"  onclick="selectCustomer('${item.name}', '${item.address}', '${item.mobile}','${item.id}')">ADD</a></td>
+                 </tr>
+                
+                
+                `
+                customerList.append(row); 
+
+             });
+           
+           }
+       </script>
 
 <!-- Customer Selection -->
 <div class="customer-section">
@@ -227,16 +265,43 @@
 
 
     <!-- Payment Modal -->
-    <div id="paymentModal" class="modal">
+   <!-- Payment Modal -->
+<div id="paymentModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <h3>Payment</h3>
-            <label>Total Amount: $<span id="modal-total"></span></label>
-            <input type="number" id="amountReceived" placeholder="Amount Received">
-            <div id="paymentResult"></div>
-            <button onclick="processPayment()">Complete Payment</button>
-            <button class="close" onclick="closePaymentModal()">Close</button>
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="paymentModalLabel">Complete Payment</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="modal-total" class="font-weight-bold">Total Amount:</label>
+                    <h4>$<span id="modal-total"></span></h4>
+                </div>
+                <div class="form-group">
+                    <label for="amountReceived">Amount Received</label>
+                    <input type="number" class="form-control" id="amountReceived" placeholder="Enter amount received">
+                </div>
+                <div id="paymentResult"></div>
+            </div>
+            <div class="modal-footer">
+                <!-- Styled buttons -->
+                <button type="button" class="btn btn-lg btn-success font-weight-bold shadow" onclick="processPayment()">
+                    <i class="fas fa-check-circle"></i> Paid
+                </button>
+                <button type="button" class="btn btn-lg btn-danger font-weight-bold shadow" data-dismiss="modal" onclick="closePaymentModal()">
+                    <i class="fas fa-times-circle"></i> Close
+                </button>
+            </div>
         </div>
     </div>
+</div>
+
+
+   
+    <!-- Payment Modal -->
 
     <script>
         let cart = [];

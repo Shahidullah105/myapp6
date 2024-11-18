@@ -47,7 +47,7 @@
                 </a>
                 <div class="collapse" id="sidebarDashboard">
                     <ul class="nav-second-level">
-                        <li><a href="index.html">Ecommerce</a></li>
+                        <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                         <li><a href="dashboard-analytics.html">Analytics</a></li>
                     </ul>
                 </div>
@@ -123,7 +123,7 @@
                 <div class="collapse" id="sidebarProjects">
                     <ul class="nav-second-level">
                         <li><a href="{{url('/sale')}}"> Sale </a></li>
-                        <li><a href="{{url('/sale/show')}}">List of Sale </a></li>
+                        <li><a href="{{url('/invoices/show')}}">List of Sale </a></li>
                     </ul>
                 </div>
             </li>

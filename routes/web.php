@@ -19,12 +19,13 @@ Route::get('/', function () {
 }); 
 
 Route::get('/dashboard2', function () {
-    return view('admin.dashboard.index')->name('customer');
+    return view('admin.dashboard2.index')->name('customer');
 });
 
 //Route::get('/customer', function () {
   //  return view('admin.customer.add');
 //});
+Route::get('/dashboard', [AdminController::class, 'index'])->middleware('auth');
 Route::get('/show/customer', [CustomerController::class, 'show'])->middleware('auth');
 Route::get('/edit/customer/{id}', [CustomerController::class, 'edit'])->middleware('auth');
 Route::get('/customer', [CustomerController::class, 'index'])->name('customer')->middleware('auth');
@@ -41,16 +42,19 @@ Route::post('/product/update', [ProductController::class, 'update'])->middleware
 Route::get('/delete/{id}', [ProductController::class, 'destroy'])->middleware('auth');
 Route::get('/productlist', [ProductController::class, 'ProductList'])->name('product')->middleware('auth');
 
+Route::get('/view/salelist/{id}', [InvoiceController::class, 'salelist'])->name('salelist');
+Route::get('/delete/invoice/{id}', [InvoiceController::class, 'destroy'])->name('invoices.destroy');
 Route::get('/customerlist', [CustomerController::class, 'customerlist'])->middleware('auth');
 Route::get('/sale', [InvoiceController::class, 'sale'])->name('sale')->middleware('auth');
 Route::post('/invoices', [InvoiceController::class, 'submitInvoice'])->name('submitInvoice')->middleware('auth');
+Route::get('/invoices/show', [InvoiceController::class, 'index'])->name('invoices.index')->middleware('auth');
 //Route::get('/setting', [SettingController::class, 'edit'])->middleware('auth');
 //Route::post('/setting/update', [SettingController::class, 'update'])->middleware('auth');
 
 Route::get('/show/brand', [BrandController::class, 'show'])->middleware('auth');
 Route::get('/edit/brand/{id}', [BrandController::class, 'edit'])->middleware('auth');
 Route::get('/brand', [BrandController::class, 'index'])->name('brand')->middleware('auth');
-Route::post('/brand/submit', [BrandController::class, 'store'])->middleware('auth');
+Route::post('/brand/submit', [BrandController::class, 'create'])->middleware('auth');
 
 Route::post('/brand/update', [BrandController::class, 'update'])->middleware('auth');
 Route::get('/delete/{id}', [BrandController::class, 'destroy'])->middleware('auth');
